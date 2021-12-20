@@ -1,4 +1,4 @@
-CREATE TABLE `{{ database_name }}`.`TestTable1` (
+CREATE OR REPLACE TABLE `{{ database_name }}`.`TestTable1` (
   `UUID` STRING,
   `Id` BIGINT,
   `Data` STRING,
