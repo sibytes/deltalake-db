@@ -33,7 +33,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://deltalake-db-projects.readthedocs.io/en/latest/",
     project_urls={
-        'GitHub': 'https://github.com/semanticinsight/DatabricksDatabaseProjects',
+        'GitHub': 'https://github.com/semanticinsight/deltalake-db',
         'Documentation': 'https://deltalake-db-projects.readthedocs.io/en/latest/'
     },
     author="Shaun Ryan",
