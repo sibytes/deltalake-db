@@ -1,0 +1,22 @@
+environments: 
+    development:
+        storage: adl:blahblah
+        location: "{{ storage }}/databricks/{{ database_home }}/{{ database_folder_name }}/{{ table_name }}"
+
+    production:
+        storage: adl:lalalala
+        location: "{{ storage }}/databricks/{{ database_home }}/{{ database_folder_name }}/{{ table_name }}"
+
+projects : 
+    TestDB: 
+        TestDBSql1 :
+            database_folder_name: testdb
+            database_home: delta
+            format: delta
+            table_type: UNMANAGED
+        TestDBSql2:
+            database_folder_name: testdb
+            database_home: delta
+            format: delta
+            table_type: UNMANAGED
+

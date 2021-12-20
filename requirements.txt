@@ -1,0 +1,13 @@
+black
+Jinja2
+mkdocs
+pytest
+pytest-cov
+pytest-env
+pytest-mock
+PyYAML
+click
+setuptools-git-versioning
+twine
+
+
