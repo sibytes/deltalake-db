@@ -143,20 +143,34 @@ def _save_scripts(db_project: str, build_path: str, scripts: dict):
 
 def build(db_project: str, path: str, config_filename: dict):
 
+    # load the configuration file into a dict
     config = _load_config(path, config_filename)
 
+    # create the build directory where the build scripts will be created
     build_path = f"{path}_build"
     _create_build_dir(build_path)
 
     # build the parameter dictionary for each table
+    # The parameters are held in the configuration file and are jinja templated themselves
+    # the parameters for which are in the same config file. This process:
+    # 1. renders out the jinja
+    # 2. blows out the parameters for each db object
+    # 3. index keys them in a dictionary with the convention
+    #    [database]![environment]![objectname]
+    # The net result is that we have a dictionary of jinja parameters
+    # for each sql object file that we can easily lookup and use.
     params = _build_parameters(db_project, path, config)
-    project_path = f"{path}/{db_project}"
 
+    # load the sql files into jinja
+    project_path = f"{path}/{db_project}"
     loader = FileSystemLoader(project_path)
     env = Environment(loader=loader, undefined=Undefined)
 
+    # render the scripts for each environment and db into a dictionary
+    # for every keyed object in the parameters dict
     scripts = {}
     for k, v in params.items():
         _render_script(env, k, v, scripts)
 
+    # save the scripts to the build directory
     _save_scripts(db_project, build_path, scripts)
