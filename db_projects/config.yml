@@ -1,10 +1,10 @@
 environments: 
     development:
-        storage: adl:blahblah
+        storage: abfss://datalake@datalake.dfs.core.windows.net
         location: "{{ storage }}/databricks/{{ database_home }}/{{ database_folder_name }}/{{ table_name }}"
 
     production:
-        storage: adl:lalalala
+        storage: abfss://lalalala
         location: "{{ storage }}/databricks/{{ database_home }}/{{ database_folder_name }}/{{ table_name }}"
 
 projects : 
